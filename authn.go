@@ -107,14 +107,14 @@ func ldapSearch(username, password string) (*v1.UserInfo, error) {
 	defer l.Close()
 
 	// Authenticate as LDAP admin user
-	err = l.Bind("cn=admin,dc=mycompany,dc=com", "adminpassword")
+	err = l.Bind("cn=admin,dc=devnetstack,dc=com", "adminpassword")
 	if err != nil {
 		return nil, err
 	}
 
 	// Execute LDAP Search request
 	searchRequest := ldap.NewSearchRequest(
-		"dc=mycompany,dc=com",  // Search base
+		"dc=devnetstack,dc=com",  // Search base
 		ldap.ScopeWholeSubtree, // Search scope
 		ldap.NeverDerefAliases, // Dereference aliases
 		0,                      // Size limit (0 = no limit)
